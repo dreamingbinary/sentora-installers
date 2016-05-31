@@ -848,8 +848,8 @@ fi
 #--- PHP
 echo -e "\n-- Installing and configuring PHP"
 if [[ "$OS" = "CentOs" ]]; then
-    $PACKAGE_INSTALLER php php-devel php-gd php-mbstring php-intl php-mysql php-xml php-xmlrpc
-    $PACKAGE_INSTALLER php-mcrypt php-imap  #Epel packages
+    $PACKAGE_INSTALLER php56w php56w-devel php56w-gd php56w-mbstring php56w-intl php56w-mysql php56w-xml php56w-xmlrpc
+    $PACKAGE_INSTALLER php56w-mcrypt php56w-imap  #Epel packages
     PHP_INI_PATH="/etc/php.ini"
     PHP_EXT_PATH="/etc/php.d"
 elif [[ "$OS" = "Ubuntu" ]]; then
@@ -892,7 +892,7 @@ sed -i "s|expose_php = On|expose_php = Off|" $PHP_INI_PATH
 if [[ "$OS" = "CentOs" || ( "$OS" = "Ubuntu" && "$VER" = "14.04") ]] ; then
     echo -e "\n# Building suhosin"
     if [[ "$OS" = "Ubuntu" ]]; then
-        $PACKAGE_INSTALLER php5-dev
+        $PACKAGE_INSTALLER php56w-dev
     fi
     SUHOSIN_VERSION="0.9.37.1"
     wget -nv -O suhosin.zip https://github.com/stefanesser/suhosin/archive/$SUHOSIN_VERSION.zip
